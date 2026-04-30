@@ -1,0 +1,42 @@
+name: Daily Job Scout
+
+on:
+  schedule:
+    - cron: '0 14 * * *'  # 07:00 MST (14:00 UTC)
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 python-dotenv openai notion-client sendgrid
+      
+      - name: Run job scout
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          BLAKE_EMAIL: ${{ secrets.BLAKE_EMAIL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/job_scout.py
+      
+      - name: Commit and push digest
+        run: |
+          git config user.name "Job Scout Bot"
+          git config user.email "bot@blake-a11y.com"
+          git add reports/
+          git diff-index --quiet HEAD || git commit -m "Daily digest $(date +%Y-%m-%d)"
+          git push

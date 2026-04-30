@@ -1,0 +1,37 @@
+name: On Apply Handler
+
+on:
+  repository_dispatch:
+    types: [apply-clicked]
+
+jobs:
+  log_apply:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests notion-client python-dotenv
+      
+      - name: Log application
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_PAGE_ID: ${{ github.event.client_payload.page_id }}
+        run: |
+          python scripts/apply_logger.py
+      
+      - name: Commit application log
+        run: |
+          git config user.name "Apply Logger Bot"
+          git config user.email "bot@blake-a11y.com"
+          git add reports/applications.md
+          git diff-index --quiet HEAD || git commit -m "Logged application"
+          git push
