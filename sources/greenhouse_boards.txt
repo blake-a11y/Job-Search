@@ -1,0 +1,8 @@
+# Greenhouse Job Board URLs
+# Format: https://boards.greenhouse.io/companyname
+https://boards.greenhouse.io/openai
+https://boards.greenhouse.io/anthropic
+https://boards.greenhouse.io/scale
+https://boards.greenhouse.io/cohere
+https://boards.greenhouse.io/huggingface
+https://boards.greenhouse.io/mistral

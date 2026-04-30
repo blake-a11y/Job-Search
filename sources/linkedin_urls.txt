@@ -1,0 +1,8 @@
+# LinkedIn Saved Search URLs
+# Add your saved search URLs here, one per line
+# Example: https://www.linkedin.com/jobs/search/?keywords=AI+Operations&f_WT=2
+# Format: URL
+https://www.linkedin.com/jobs/search/?keywords=AI+Operations+Manager&f_WT=2&f_E=4%2C5
+https://www.linkedin.com/jobs/search/?keywords=MLOps+Manager&f_WT=2
+https://www.linkedin.com/jobs/search/?keywords=AI+Program+Manager&f_WT=2
+https://www.linkedin.com/jobs/search/?keywords=AI+GTM+Operations&f_WT=2

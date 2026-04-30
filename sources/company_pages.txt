@@ -1,0 +1,7 @@
+# Direct company career page URLs
+# These require manual or custom scraping
+# Format: Company Name | URL
+DeepMind | https://deepmind.google/about/careers/
+Meta AI | https://www.metacareers.com/jobs?q=AI+Operations
+Microsoft AI | https://jobs.microsoft.com/jobs/search?q=AI+Operations
+Amazon Bedrock | https://www.amazon.jobs/content/en/teams/AWS/machine-learning

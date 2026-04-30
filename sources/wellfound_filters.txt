@@ -1,0 +1,5 @@
+# Wellfound (AngelList) search filters
+# Role: AI Operations, MLOps, AI Program Manager
+# Stage: Series B+
+# Remote: Yes
+# Min Salary: 140000
